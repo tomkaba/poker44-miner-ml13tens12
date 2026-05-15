@@ -100,7 +100,7 @@ class Miner(BaseMinerNeuron):
         self.model_manifest = build_local_model_manifest(
             repo_root=repo_root,
             implementation_files=[
-                repo_root / "weights" / "gen13_tens7_170_hardened.ts",
+                repo_root / "weights" / "gen13_tens10_conservative_hardened.ts",
                 Path(__file__).resolve(),
                 repo_root / "poker44" / "__init__.py",
                 repo_root / "poker44" / "base" / "miner.py",
@@ -112,13 +112,13 @@ class Miner(BaseMinerNeuron):
                 repo_root / "poker44" / "validator" / "synapse.py",
             ],
             defaults={
-                "model_name": "poker44_ml13tens7",
-                "model_version": "13.7",
+                "model_name": "poker44_ml13tens12",
+                "model_version": "13.12",
                 "framework": "pytorch-torchscript",
                 "license": "MIT",
-                "repo_url": "https://github.com/tomkaba/poker44-miner-ml13tens7",
+                "repo_url": "https://github.com/tomkaba/poker44-miner-ml13tens12",
                 "repo_commit": git_commit,
-                "notes": "Gen13Tens7 neural network scorer (POT=170)",
+                "notes": "Gen13Tens7 neural network scorer (conservative)",
                 "open_source": True,
                 "inference_mode": "local",
                 "training_data_statement": "Trained with benchmark groundtruth",
@@ -310,6 +310,6 @@ if __name__ == "__main__":
         bt.logging.info("Miner running...")
         while True:
             bt.logging.info(
-                f"Miner UID: {miner.uid} | Incentive: {float(miner.metagraph.I[miner.uid])} | Scorer: ml13tens7"
+                f"Miner UID: {miner.uid} | Incentive: {float(miner.metagraph.I[miner.uid])} | Scorer: ml13tens12"
             )
             time.sleep(60)
